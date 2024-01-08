@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>실습예제 배열객체_추천광고</title>
+    <style>
+        #banner{
+            
+        }
+        article{
+            width: 325px; height: 600px;
+            border: 3px solid #333;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        h3{
+            text-align: center;
+        }
+        h3 > span{
+            color: blue;
+            
+        }
+        span.fas{
+            font-size: 50px;
+            color: #fff;
+            background-color: rgba(0,0,0,.7);
+            position: absolute;
+            bottom: 40%;
+            cursor: pointer;
+        }
+        span.fa-angle-right{
+            right: 0px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h2>실습예제_배열객체를 사용한 추천 광고상품 만들기</h2>
+    <p>1. 새로고침시, 랜덤 이미지 변경</p>
+    <p>2. 좌,우 버튼 클릭시, 이미지 변경 배열객체 사용</p>
+
+    <!-- 배너창 -->
+    <article>
+        <h3>HOT! TREND <br><span>추천광고상품</span></h3>
+        <div id="banner">
+            <img src="./image2/image1.jpg" alt="배너이미지">
+        </div>
+        <span class="fas fa-angle-left" id="l_btn"></span>
+        <span class="fas fa-angle-right" id="r_btn"></span>
+    </article>
+
+
+    <script>
+        //1. 배열객체를 생성하여 광고명을 배열로 담는다.
+        let ban = ['image1', 'image2', 'image3','image4','image5', 'image6', 'image7', 'image8', 'image9', 'image10', 'image11', 'image12', 'image13', 'image14', 'image15', 'image16', 'image17', 'image18']
+
+        let ran_n = Math.floor(Math.random()*18);
+        console.log(ran_n);
+        const left_btn = document.getElementById('l_btn');
+        const right_btn = document.getElementById('r_btn');
+
+        //2. 배열데이터 출력하기
+        document.getElementById('banner').innerHTML='<img src="image2/'+ban[ran_n]+'.jpg" alt="배너이미지">'
+
+        left_btn.addEventListener('click',function(){
+            if(ran_n==0){
+                ran_n=17;
+            }else{
+                ran_n--;
+            }
+            document.getElementById('banner').innerHTML='<img src="image2/'+ban[ran_n]+'.jpg" alt="배너이미지">';
+        });
+        right_btn.addEventListener('click',function(){
+            if(ran_n==0){
+                ran_n=17;
+            }else{
+                ran_n--;
+            }
+            document.getElementById('banner').innerHTML='<img src="image2/'+ban[ran_n]+'.jpg" alt="배너이미지">';
+        });
+
+    </script>
+
+    
+</body>
+</html>

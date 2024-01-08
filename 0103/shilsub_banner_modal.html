@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습예제1_웹페이지 상단 배너접기_모달창 띄우기_숨기기</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <style>
+        *{margin: 0; padding: 0;}
+        .banner, .wrap{
+            width: 1034px;
+            margin: 0px auto;
+        }
+        .popup_back{
+            z-index: 10;
+            position: fixed;
+            left: 0; right: 0; top: 0; bottom: 0;
+            background: rgba(0,0,0,.6);        
+        }
+        .popup_main{
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .popup_main >div{
+            margin-left: 30%;
+            width: 40%;
+            display: flex;
+            justify-content:center  
+        }
+        p{color: #fff;}
+        #close_btn{ 
+            margin: 10px;
+            width: 30px; height: 10px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            padding: 4px 10px;
+        }
+
+    </style>
+    <script>
+        $(document).ready(function(){
+            const cbtn = $('.banner #c_btn');
+
+            cbtn.click(function(){
+                $('.banner').slideUp();
+            });
+            // 팝업창 닫기
+            const popup_cbtn = $('#close_btn');
+            popup_cbtn.click(function(){
+                $('.popup_back').fadeOut();
+            });
+        });
+    
+    </script>
+</head>
+<body>
+    <div class="banner">
+        <a href="#" title="배너"><img src="./images/main01_01.jpg" alt="배너"></a>
+        <input type="button" value="닫기" id="c_btn">
+    </div>
+    <div class="wrap">
+        <img src="./images/main01_02.jpg" alt="메인">
+    </div>
+
+    <!-- 모달창 만들기 -->
+    <div class="popup_back">
+        <div class="popup_main">
+            <img src="./images/popup.jpg" alt="이미지">
+            <div>
+                <input type="checkbox">
+                <p>오늘 하루 이 창을 열지않음</p>
+                <div><a href="#" id="close_btn">닫기</a></div>
+            </div>
+
+        </div>
+
+    </div>
+    
+</body>
+</html>

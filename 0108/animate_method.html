@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_애니메이트 메서드 복습하기</title>
+    <style>
+        .box{
+            width:478px; height:278px;
+            border: 3px solid #000;
+            margin:0 auto;
+            position:relative;
+        }
+        .face, .title{
+            position:absolute;
+            opacity:0;
+        }
+        .face{right:0px; bottom:-300px;
+            /* bottom:0px; */
+        }
+        .title{ top:60px; left:-140px;
+            /* left:30px; */
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            const t=$('.title');
+            const f=$('.face');
+
+            t.animate({'left':'30px','opacity':'1'},500);
+            f.delay(150).animate({'bottom':'0px','opacity':'1'},500);
+        });
+    </script>
+</head>
+<body>
+    <h2>01_애니매이트 매서드 복습하기</h2>
+
+    <article class="box">
+        <h3 class="title"><img src="./images/jobs_text.gif" alt="스티브잡스"></h3>
+        <img src="./images/jobs.png" alt="스티브잡스 얼굴" class="face">
+    </article>
+    
+</body>
+</html>

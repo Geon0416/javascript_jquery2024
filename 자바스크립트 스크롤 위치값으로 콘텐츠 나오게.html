@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트로 스크롤 위치값에 따른 콘텐츠 움직이게 하기</title>
+  <style>
+    *{margin:0px;padding:0px;}
+    body{
+      height:6000px;
+      background:#ff0;
+    }
+    .box01{
+      width:150px;height:150px;
+      background:#f00;
+      position:absolute;
+      left:200px;
+      top:3200px;
+    }
+  </style>
+  <script>
+
+// var B = document.body;
+// var H = document.documentElement;
+// var height;
+
+// if (typeof document.height !== 'undefined') {
+//   height = document.height; // For webkit browsers
+// } else {
+//   height = Math.max( B.scrollHeight, B.offsetHeight, H.clientHeight, H.scrollHeight, H.offsetHeight );
+// }
+
+    let scrollTop;
+
+    //이벤트 리스너는 window에 걸고 scroll의 변화를 기준으로 실행합니다. 
+    window.addEventListener("scroll", function(){
+      // console.log(window.scrollY);
+      scrollTop = window.scrollY || document.documentElement.scrollTop;
+      //console.log(scrollTop);
+
+      //스크롤 퍼센트값 계산
+      let s = Math.floor((window.scrollY/window.innerHeight) * 100)+'%';
+      //console.log(s);
+      let w = document.documentElement.scrollTop;
+      console.log(w);
+    });
+  </script>
+</head>
+<body>
+  
+
+  <div class="box01">박스</div>
+</body>
+</html>

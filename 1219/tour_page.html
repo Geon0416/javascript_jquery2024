@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행광고 목록</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" >
+    <style>
+        .t_box *{margin: 0px;padding: 0px;}
+        .t_box{width: 458px; height: 330px; border:3px solid #000;
+                text-align: right;
+                position: relative;
+            }
+        .t_box > img{width: 458px;height: 300px;}
+        #page{
+            position: absolute;
+            bottom: 0px;
+            right: 10px;
+            background: rgba(0, 0, 0,.6);
+            color: #fff;
+            padding: 4px 10px;
+
+        }
+
+        .fas{
+            position: absolute;
+            top: 50%;
+            /* transform: translateY(-0px); */
+            color: #fff;
+            width: 20px;height: 20px;
+            background: #000;
+            text-align: center;
+            line-height: 20px;
+        }
+        #left_btn{left: 0px;}
+        #right_btn{right: 0px;}
+
+        h2{
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <article class="t_box">
+        <h2>겨울휴가는 따뜻한 곳으로 가자!!!</h2>
+        <p>
+            <span id="page"></span>
+            <span class="fas fa-angle-left" id="left_btn"></span>
+            <span class="fas fa-angle-right" id="right_btn"></span>
+        </p>
+
+        <img src="./images/image1.jpg" alt="여행사진" id="tour">
+    </article>
+
+    <script>
+        let n = 1;
+        const l_btn = document.getElementById('left_btn');
+        const r_btn = document.getElementById('right_btn');
+
+        let page_n = document.getElementById('page');
+
+        page_n.innerHTML = n + '/5';
+
+        l_btn.addEventListener('click',function(){
+            // window.alert('왼쪽버튼 클릭'); 
+            if(n==1){
+                n=5;
+            }else{
+                n--;
+            }
+            page_n.innerHTML = n + '/5';
+            document.getElementById('tour').src='./images/image'+n+'.jpg';
+        });
+
+        r_btn.addEventListener('click',function(){
+            // window.alert('오른쪽버튼 클릭');
+            if(n==5){
+                n=1;
+            }else{
+                n++;
+            }
+            page_n.innerHTML = n + '/5';
+            document.getElementById('tour').src='./images/image'+n+'.jpg';
+        });
+    </script>
+    
+</body>
+</html>
