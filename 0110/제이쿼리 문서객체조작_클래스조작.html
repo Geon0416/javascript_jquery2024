@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리 문서객체조작(DOM)_01클래스조작</title>
+  <style>
+    .box{
+      background:#ccc;
+      border:3px double #f00;
+      width:400px;height:200px;
+    }
+    .act{
+      background:#ff0;
+    }
+
+    aside{
+      position:fixed;
+      right:0px;top:0px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      //1. addClass
+      $('#btn01').click(function(){
+        $('.box').addClass('act');
+      });
+      //2. removeClass
+      $('#btn02').click(function(){
+        $('.box').removeClass('act');
+      });
+      //3. toggleClass = addClass, removeClass
+      $('#btn03').click(function(){
+        $('.box').toggleClass('act');
+      });
+      //4. hasClass 해당클래스가 있는지/없는지 유무 알려줌
+      $('#btn04').click(function(){
+        if($('.box').hasClass('act')==true){
+          alert('.box에 act클래스가 존재합니다.');
+        }else{
+          alert('.box에 act클래스가 존재하지 않습니다.');
+        }
+      });
+
+      $('h2').css('color','#f00');
+      $('p').css('background','#0f0');
+
+
+    });
+  </script>
+</head>
+<body>
+  <h2>제이쿼리 문서객체조작(DOM)_01클래스조작</h2>
+  <P>사용자가 선택한 요소에 클래스를 추가하거나 삭제, 또는 클래스가 없는 요소를 찾아서 서식을 적용하는 메소드이다.</P>
+
+  <ul>
+    <li>addClass(); - 선택한 요소에 클래스 서식을 추가</li>
+    <li>removeClass(); - 선택한 요소에 클래스 서식을 제거</li>
+    <li>toggleClass(); - 선택한 요소에 클래스 서식을 추가/제거</li>
+    <li>hasClass(); - 선택한 요소에 해당 클래스 이름이 있는지 여부를 판단하여 true, fals값으로 표시</li>
+    <li>class(); - 사용자가 선택한 요소에 서식을 적용</li>
+  </ul>
+
+  <h3>1. 실습하기</h3>
+  <p>버튼을 클릭하면 box요소에 서식을 추가/제거하기</p>
+  <div class="box">
+    아래 버튼을 누르면 현재 박스에 서식을 적용하거나 제거하기
+  </div>
+
+  <input type="button" value="addClass적용하기" id="btn01">
+  <input type="button" value="removeClass적용하기" id="btn02">
+  <input type="button" value="toggleClass적용하기" id="btn03">
+  <input type="button" value="hasClass적용하기" id="btn04">
+
+  <h3>2. 삼성화재 오른쪽 고정배치된 'quick menu'구현하기</h3>
+  <aside>
+    <i class="fas fa-angle-right"></i>
+    <img src="./images/quick.jpg" alt="퀵메뉴">
+  </aside>
+
+</body>
+</html>

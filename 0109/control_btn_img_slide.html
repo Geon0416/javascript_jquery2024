@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컨트롤 버튼을 활용한 이미지 슬라이드</title>
+    <style>
+        /* 초기화 */
+        *{margin:0px; padding:0px;}
+        ol,ul,li{list-style:none;}
+        #product{
+            width:350px; height:420px;
+            border:3px solid #000;
+            margin: 0px auto;
+            text-align: center;
+            position:relative;
+        }
+        #product > h2{
+            text-align: center;
+            font-size:30px;
+            padding:10px 0px;
+        }
+        #product ul{
+            display:flex;
+            width:1400px;
+            position: absolute;
+            top:40px;
+        }
+        #product ul li{width:350px;}
+        #product ul img{width:100%;}
+        .c_btn{
+            display: inline-block;
+            width:15px; height: 15px;
+            border: 1px solid #000;
+            border-radius:50%;
+            transform:translateY(330px);
+        }
+        .act{background:#f00;}
+
+    </style>
+</head>
+<body>
+    <h2>제이쿼리_콘트롤 버튼을 활용한 이미지 슬라이드</h2>
+    <ul>
+        <li>이미지 350픽셀 사진 4장을 목록태그로 가로배치(flex, inline, inline-block, float, grid)한다.</li>
+        <li>1번 사진 아래쪽에 span태그를 사용하여 콘트롤 버튼 모양을 구현</li>
+        <li>js나 제이쿼리에서 콘트롤 버튼 클릭시 각각 해당 인덱스(i)을 구하여 변수에 담는다.</li>
+        <li>콘트롤버튼 클릭시, 나온 연산값 -0, -350, -700, -1050을 각각 구하여 ul태그의  left값에 대입</li>
+    </ul>
+
+    <article id="product">
+        <h2>신제품 출시</h2>
+        <ul>
+            <li><a href="" title=""><img src="./fiber_img1.png" alt=""></a></li>
+            <li><a href="" title=""><img src="./fiber_img2.png" alt=""></a></li>
+            <li><a href="" title=""><img src="./fiber_img3.png" alt=""></a></li>
+            <li><a href="" title=""><img src="./fiber_img4.png" alt=""></a></li>
+        </ul>
+        <div>
+            <span class="c_btn act">&nbsp;</span>
+            <span class="c_btn">&nbsp;</span>
+            <span class="c_btn">&nbsp;</span>
+            <span class="c_btn">&nbsp;</span>
+        </div>
+    </article>
+
+    
+    <!-- 제이쿼리 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+
+            //1. 컨트롤 버튼 클릭시, 인덱스값 0,1,2,3 출력하기
+            let i=0;
+
+            const cbtn = $('#product div > .c_btn');
+
+            cbtn.click(function(){
+                i = $(this).index();
+                console.log(i);
+                i = -(i*$('#product ul li').width());
+                console.log(i);// -0, -350, -700, -1050
+
+                //해당값을 목록에 대입하여 슬라이드가 움직이도록 함.
+                $('#product ul').animate({'left':i},500);
+
+                //콘트롤 버튼 서식 제거하고 현재 콘트롤 버튼에 서식 적용
+                $('#product div span').removeClass('act');
+                $(this).addClass('act');
+            });
+
+        });
+    </script>
+    
+</body>
+</html>
