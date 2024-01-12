@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿠팡메인 슬라이드 만들기</title>
+    <style>
+        .coupang_main_slide *{margin:0px; padding:0px;}
+        .coupang_main_slide{
+            width:90%;
+            position: relative;
+        }
+        .coupang_main_slide > nav{
+            position:absolute;
+            top:12%; left:85%;
+        }
+        .coupang_main_slide > nav > ul{
+            list-style:none;
+            /* border:1px solid #ff0; */
+        }
+        .coupang_main_slide > nav > ul > li{
+            /* margin-top:-6px; */
+        }
+        .coupang_main_slide > nav > ul > li:hover{
+            border:2px solid #f00;
+            height: 60px;
+        }
+    </style>
+
+</head>
+<body>
+    <h2>쿠팡 메인 슬라이드 구현</h2>
+
+    <article class="coupang_main_slide">
+        <h3>쿠팡 메인슬라이드</h3>
+        <nav>
+            <ul>
+                <li>
+                    <a href="./images/main_slide1.jpg" title="메인1">
+                        <img src="./images/main_slide1_btn.jpg" alt="메인1">
+                    </a>
+                </li>
+                <li>
+                    <a href="./images/main_slide2.jpg" title="메인2">
+                        <img src="./images/main_slide2_btn.jpg" alt="메인2">
+                    </a>
+                </li>
+                <li>
+                    <a href="./images/main_slide3.jpg" title="메인3">
+                        <img src="./images/main_slide3_btn.jpg" alt="메인3">
+                    </a>
+                </li>
+                <li>
+                    <a href="./images/main_slide4.jpg" title="메인4">
+                        <img src="./images/main_slide4_btn.jpg" alt="메인4">
+                    </a>
+                </li>
+                <li>
+                    <a href="./images/main_slide5.jpg" title="메인5">
+                        <img src="./images/main_slide5_btn.jpg" alt="메인5">
+                    </a>
+                </li>
+                <li>
+                    <a href="./images/main_slide6.jpg" title="메인6">
+                        <img src="./images/main_slide6_btn.jpg" alt="메인6">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <img src="./images/main_slide1.jpg" alt="메인슬라이드" id="mslide">
+    </article>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        let img_src;
+        let coupang_main_slide_mnu = $('.coupang_main_slide nav li a');
+
+        coupang_main_slide_mnu.mouseenter(function(){
+            img_src = $(this).attr('href');
+            console.log(img_src);
+
+            $('#mslide').attr('src', img_src)
+        });
+
+    </script>
+    
+</body>
+</html>
